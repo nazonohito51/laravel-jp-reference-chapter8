@@ -1,0 +1,40 @@
+---
+ip: "192.168.10.10"
+memory: 2048
+cpus: 1
+hostname: laravel-jp-reference-chapter8
+name: laravel-jp-reference-chapter8
+provider: virtualbox
+
+authorize: ~/.ssh/github_rsa.pub
+
+keys:
+    - ~/.ssh/github_rsa
+
+folders:
+    - map: "C:/Users/LocalAccount/Documents/GitHub/laravel-jp-reference-chapter8"
+      to: "/home/vagrant/laravel-jp-reference-chapter8"
+
+sites:
+    - map: homestead.app
+      to: "/home/vagrant/laravel-jp-reference-chapter8/public"
+
+databases:
+    - homestead
+
+variables:
+    - key: APP_ENV
+      value: local
+
+# blackfire:
+#     - id: foo
+#       token: bar
+#       client-id: foo
+#       client-token: bar
+
+# ports:
+#     - send: 93000
+#       to: 9300
+#     - send: 7777
+#       to: 777
+#       protocol: udp
