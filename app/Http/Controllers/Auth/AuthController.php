@@ -61,4 +61,28 @@ class AuthController extends Controller
             'password' => bcrypt($data['password']),
         ]);
     }
+
+    public function postRegister(Request $request)
+    {
+        $validator = $this->validator($request->all());
+        if ($validator->fails()) {
+            $this->throwValidationException(
+                $request, $validator
+            );
+        }
+
+        $user = $this->create($request->all());
+        \Mail::send(
+            'emails.register',
+            ['user' => $user],
+            function ($m) use ($user) {
+                $m->sender('nazonohito51@hotmail.com', 'Laravelリファレンス')
+                    ->to($user->email, $user->name)
+                    ->subject('ユーザー登録が完了しました');
+            }
+        );
+
+        \Auth::login($user);
+        return redirect($this->redirectPath());
+    }
 }
