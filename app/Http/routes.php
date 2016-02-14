@@ -14,3 +14,12 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+\Route::controller('auth', 'Auth\AuthController',
+    [
+        'postLogin' => 'post.login',
+        'getLogin' => 'get.login',
+        'getRegister' => 'get.register',
+        'postRegister' => 'post.register'
+    ]
+);
