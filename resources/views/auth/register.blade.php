@@ -1,7 +1,7 @@
 @extends('layouts.default')
 @section('content')
 <form method="post" action="{{{ route('post.register') }}}">
-    {!! ! csrf_field() !!}
+    {!! csrf_field() !!}
     <div class="form-group @if($errors->first('name'))has-error @endif">
         <label class="control-label" for="name">名前</label>
         <input type="text" class="form-control" id="name" name="name" placeholder="名前を入力してください" value="{{{ old('name') }}}">
