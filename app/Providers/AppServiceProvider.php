@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Validators\CustomValidator;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -13,7 +14,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        $this->app['validator']->resolver(function($translator, $data, $rules, $message) {
+            return new CustomValidator($translator, $data, $rules, $message);
+        });
     }
 
     /**
