@@ -18,6 +18,13 @@
         <label for="password_confirmation">もう一度入力してください</label>
         <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="もう一度パスワードを入力してください">
     </div>
+    <img src="{!! captcha() !!}"/>
+
+    <div class="form-group @if($errors->first('captcha_code'))has-error @endif">
+        <label class="control-label" for="captcha_code">画像認証 {{{ $errors->first('captcha_code') }}}</label>
+        <input type="text" class="form-control" name="captcha_code" id="captcha_code"
+               placeholder="画像に表示されている文字を入力してください"/>
+    </div>
     <button type="submit" class="btn btn-success">アカウント作成</button>
 </form>
 @stop

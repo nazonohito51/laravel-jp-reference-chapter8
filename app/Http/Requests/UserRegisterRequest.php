@@ -28,7 +28,8 @@ class UserRegisterRequest extends Request
         return [
             'name' => 'required|max:255',
             'email' => 'required|email|max:255|unique:users',
-            'password' => 'required|confirmed|min:6'
+            'password' => 'required|confirmed|min:6',
+            'captcha_code' => 'required|captcha'
         ];
     }
 }
