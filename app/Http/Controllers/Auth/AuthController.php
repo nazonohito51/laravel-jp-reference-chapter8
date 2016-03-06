@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Services\UserService;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginRequest;
 use App\Http\Requests\UserRegisterRequest;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
@@ -33,6 +34,24 @@ class AuthController extends Controller
     {
         $this->middleware('guest', ['except' => 'getLogout']);
         $this->auth = $auth;
+    }
+
+    /**
+     * @param LoginRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function postLogin(LoginRequest $request)
+    {
+        $result = $this->auth->attempt(
+            $request->only(['email', 'password']),
+            $request->get('remenber', false)
+        );
+        if (!$request) {
+            return redirect()->route('get.login')
+                ->with('message', 'ユーザー認証に失敗しました');
+        }
+        //return redirect()->route('admin.entry.index');
+        return redirect()->route('auth.get.login');
     }
 
     /**
