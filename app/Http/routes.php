@@ -24,3 +24,11 @@
         'postRegister' => 'post.register'
     ]
 );
+
+\Route::group(['middleware' => 'auth'], function() {
+    \Route::resource(
+        'admin/entry',
+        'Admin\EntryController',
+        ['except' => ['destroy', 'show']]
+    );
+});
