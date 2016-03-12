@@ -21,7 +21,7 @@ class UserCacheProvider extends EloquentUserProvider
         $model,
         CacheContract $cache
     ) {
-        prent::__construct($hasher, $model);
+        parent::__construct($hasher, $model);
         $this->cache = $cache;
     }
 
