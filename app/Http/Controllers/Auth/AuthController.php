@@ -42,16 +42,17 @@ class AuthController extends Controller
      */
     public function postLogin(LoginRequest $request)
     {
+        var_dump('test');
         $result = $this->auth->attempt(
             $request->only(['email', 'password']),
             $request->get('remenber', false)
         );
-        if (!$request) {
+        if (!$result) {
             return redirect()->route('get.login')
                 ->with('message', 'ユーザー認証に失敗しました');
         }
-        //return redirect()->route('admin.entry.index');
-        return redirect()->route('auth.get.login');
+        return redirect()->route('admin.entry.index');
+        //return redirect()->route('auth.get.login');
     }
 
     /**
