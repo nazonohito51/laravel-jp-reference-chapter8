@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\EntryUpdateRequest;
 use Illuminate\Contracts\Auth\Guard;
 use Illuminate\Http\Request;
@@ -24,6 +25,19 @@ class EntryController extends Controller
     {
         $this->entry = $entry;
         $this->guard = $guard;
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        $result = $this->entry
+            ->getPage($request->get('page', 1), 20)
+            ->setPath($request->getBasePath());
+        return view('entry.index', ['page' => $result]);
     }
 
     /**
