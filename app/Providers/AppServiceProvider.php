@@ -32,7 +32,7 @@ class AppServiceProvider extends ServiceProvider
             \App\Repositories\UserRepository::class
         );
         $this->app->bind(
-            \App\Repositories\EntryRepository::class,
+            \App\Repositories\EntryRepositoryInterface::class,
             function($app) {
                 return new \App\Repositories\EntryRepository(
                     new \App\DataAccess\Eloquent\Entry,
