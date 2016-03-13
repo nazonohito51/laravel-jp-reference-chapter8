@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\DataAccess\Eloquent\Entry;
+use App\DataAccess\Cache\Cacheable;
 
 class EntryRepository implements EntryRepositoryInterface
 {
