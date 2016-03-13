@@ -8,7 +8,7 @@ if (!function_exists('captcha')) {
     function captcha()
     {
         /** @var Gregwar\Captcha\CaptchaBuilder $captcha */
-        $captcha = app('Gregwar\Captcha\CaptchaBuilderInterface');
+        $captcha = app(\Gregwar\Captcha\CaptchaBuilderInterface::class);
         $captcha->build();
         session(['captcha.phrase' => $captcha->getPhrase()]);
         return $captcha->inline();

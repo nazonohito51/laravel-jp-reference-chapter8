@@ -22,7 +22,7 @@ class CaptchaServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(
-            'Gregwar\Captcha\CaptchaBuilderInterface',
+            \Gregwar\Captcha\CaptchaBuilderInterface::class,
             function() {
                 return new CaptchaBuilder();
             }
@@ -32,7 +32,7 @@ class CaptchaServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            '\Gregwar\Captcha\CaptchaBuilderInterface',
+            \Gregwar\Captcha\CaptchaBuilderInterface::class,
         ];
     }
 }
