@@ -42,9 +42,10 @@ class AuthController extends Controller
      */
     public function postLogin(LoginRequest $request)
     {
+        var_dump('test');
         $result = $this->auth->attempt(
             $request->only(['email', 'password']),
-            $request->get('remenber', false)
+            $request->get('remember', false)
         );
         if (!$result) {
             return redirect()->route('get.login')
