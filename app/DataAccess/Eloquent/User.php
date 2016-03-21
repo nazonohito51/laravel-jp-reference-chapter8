@@ -12,6 +12,8 @@ class User extends Model implements AuthenticatableContract
 {
     use Authenticatable;
 
+    use SaveTransactionalTrait;
+
     /**
      * The database table used by the model.
      *
