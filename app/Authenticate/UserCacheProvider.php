@@ -29,7 +29,7 @@ class UserCacheProvider extends EloquentUserProvider
      * @param mixed $identifier
      * @return \Illuminate\Contracts\Auth\Authenticatable|null
      */
-    public function retrieveByIdy($identifier)
+    public function retrieveById($identifier)
     {
         $cacheKey = "user:{$identifier}";
         if ($this->cache->has($cacheKey)) {
