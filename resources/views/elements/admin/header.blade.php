@@ -15,7 +15,7 @@
                     <a href="{{{ route('admin.entry.index') }}}">blog</a>
                 </li>
                 <li><a href="{{{ route('logout') }}}">logout</a></li>
-                {{--<li><a href="#">ログイン:{{{ $user->name }}}</a></li>--}}
+                <li><a href="#">ログイン:{{{ $user->name }}}</a></li>
             </ul>
         </div>
         <!--/.nav-collapse -->
