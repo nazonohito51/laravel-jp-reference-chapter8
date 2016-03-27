@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use App\Repositories\EntryRepositoryInterface;
+use Illuminate\Contracts\Auth\Access\Gate;
 use Illuminate\Pagination\LengthAwarePaginator;
 
 class EntryService
