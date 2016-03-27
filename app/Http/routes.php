@@ -21,7 +21,8 @@
         'postLogin' => 'post.login',
         'getLogin' => 'get.login',
         'getRegister' => 'get.register',
-        'postRegister' => 'post.register'
+        'postRegister' => 'post.register',
+        'getLogout'    => 'logout'
     ]
 );
 
