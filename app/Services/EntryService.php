@@ -10,12 +10,18 @@ class EntryService
     /** @var EntryRepositoryInterface */
     protected $entry;
 
+    protected $gate;
+
     /**
      * @param EntryRepositoryInterface $entry
+     * @param Gate $gate
      */
-    public function __construct(EntryRepositoryInterface $entry)
-    {
+    public function __construct(
+        EntryRepositoryInterface $entry,
+        Gate $gate
+    ) {
         $this->entry = $entry;
+        $this->gate = $gate;
     }
 
     /**
@@ -24,7 +30,13 @@ class EntryService
      */
     public function addEntry(array $attributes)
     {
-        return $this->entry->save($attributes);
+        if (isset($attributes['id'])) {
+            if (!$this->getEntryAbility($attributes['id'])) {
+                return false;
+            }
+        }
+        $result = $this->entry->save($attributes);
+        return $result;
     }
 
     /**
@@ -35,6 +47,15 @@ class EntryService
     public function getEntry($id)
     {
         return $this->entry->find($id);
+    }
+
+    /**
+     * @param $id
+     * @return bool
+     */
+    public function getEntryAbility($id)
+    {
+        return $this->gate->check('update', $this->getEntry($id));
     }
 
     /**
