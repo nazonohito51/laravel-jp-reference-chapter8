@@ -25,6 +25,7 @@ class EntryController extends Controller
     {
         $this->entry = $entry;
         $this->guard = $guard;
+        $this->middleware('exists.entry', ['only' => ['edit', 'update']]);
     }
 
     /**
