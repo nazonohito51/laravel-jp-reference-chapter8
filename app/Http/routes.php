@@ -33,3 +33,5 @@
         ['except' => ['destroy', 'show']]
     );
 });
+
+\Route::resource('entry', 'EntryController', ['only' => ['index', 'show']]);
