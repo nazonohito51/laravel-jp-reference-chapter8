@@ -29,6 +29,6 @@ class Comment extends Model
      */
     public function setNameAttribute($value)
     {
-        $this->attributes['names'] = (empty($value)) ? 'no name' : $value;
+        $this->attributes['name'] = (empty($value)) ? 'no name' : $value;
     }
 }
