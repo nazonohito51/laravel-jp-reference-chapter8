@@ -1,10 +1,34 @@
 <?php
 
-namespace App\DataAccess\\Eloquent;
+namespace App\DataAccess\Eloquent;
 
 use Illuminate\Database\Eloquent\Model;
 
-class \Comment extends Model
+class Comment extends Model
 {
-    //
+    use CreateTransactionalTrait;
+
+    /** @var string */
+    protected $table = 'comments';
+
+    /** @var array */
+    protected $fillable = ['comment', 'name', 'entry_id'];
+
+    /**
+     * @param $id
+     * @param mixed
+     */
+    public function getAllByEntryId($id)
+    {
+        return $this->query()->where('entry_id', $id)
+            ->orderBy($this->primaryKey, 'ASC')->get();
+    }
+
+    /**
+     * @param string $value
+     */
+    public function setNameAttribute($value)
+    {
+        $this->attributes['names'] = (empty($value)) ? 'no name' : $value;
+    }
 }
