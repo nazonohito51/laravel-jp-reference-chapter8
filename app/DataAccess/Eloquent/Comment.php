@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-    use CreateTransactionalTrait;
+    use SaveTransactionalTrait;
 
     /** @var string */
     protected $table = 'comments';
