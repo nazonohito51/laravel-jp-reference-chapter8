@@ -14,7 +14,6 @@
 /*Route::get('/', function () {
     return view('welcome');
 });*/
-\Route::get('/', 'HomeController@index');
 
 \Route::controller('auth', 'Auth\AuthController',
     [
@@ -34,5 +33,6 @@
     );
 });
 
+get('/', 'ApplicationController@index');
 \Route::resource('entry', 'EntryController', ['only' => ['index', 'show']]);
 \Route::resource('comment', 'CommentController', ['only' => ['store']]);
