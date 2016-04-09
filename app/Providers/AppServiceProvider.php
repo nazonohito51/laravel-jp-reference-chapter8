@@ -40,5 +40,13 @@ class AppServiceProvider extends ServiceProvider
                 );
             }
         );
+        $this->app->bind(
+            \App\Repositories\CommentRepositoryInterface::class,
+            function($app) {
+                return new \App\Repositories\CommentRepository(
+                    new \App\DataAccess\Eloquent\Comment
+                );
+            }
+        );
     }
 }
