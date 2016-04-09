@@ -35,3 +35,4 @@
 });
 
 \Route::resource('entry', 'EntryController', ['only' => ['index', 'show']]);
+\Route::resource('comment', 'CommentController', ['only' => ['store']]);
