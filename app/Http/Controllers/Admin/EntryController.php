@@ -39,7 +39,7 @@ class EntryController extends Controller
         $result = $this->entry
             ->getPage($request->get('page', 1), 20)
             ->setPath($request->getBasePath());
-        return view('entry.index', ['page' => $result]);
+        return view('admin.entry.index', ['page' => $result]);
     }
 
     /**
