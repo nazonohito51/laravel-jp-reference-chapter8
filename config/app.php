@@ -145,6 +145,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         App\Providers\CaptchaServiceProvider::class,
         App\Providers\DriverServiceProvider::class,
+        App\Providers\ViewServiceProvider::class,
 
     ],
 
