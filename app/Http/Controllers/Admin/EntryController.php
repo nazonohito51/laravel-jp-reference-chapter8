@@ -51,6 +51,20 @@ class EntryController extends Controller
     }
 
     /**
+     * @param $id
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $attributes = [
+            'entry' => $this->entry->getEntry($id),
+            'id' => $id
+        ];
+
+        return view('admin.entry.edit', $attributes);
+    }
+
+    /**
      * @param EntryStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
