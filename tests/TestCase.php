@@ -22,4 +22,22 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase
 
         return $app;
     }
+
+    /**
+     * テスト時に出力するログを変更します
+     * テストでLogファサードやサービスコンテナのlogを利用する場合は、
+     * すべてこのメソッドで指定した内容に変更されます
+     * @return void
+     */
+    protected function registerTestLogger()
+    {
+        $this->app->bind('log', function ($app) {
+            $logger = new \Illuminate\Log\Writer(
+                new \Monolog\Logger('testing'), $app['events']
+            );
+            (new \Illuminate\Foundation\Bootstrap\ConfigureLogging)
+                ->bootstrap($app);
+            return $logger;
+        });
+    }
 }
