@@ -65,6 +65,21 @@ class EntryController extends Controller
     }
 
     /**
+     * @param                    $id
+     * @param EntryUpdateRequest $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update($id, EntryUpdateRequest $request)
+    {
+        $input = $request->only(['title', 'body']);
+        $input['user_id'] = $this->guard->user()->id;
+        $input['id'] = $id;
+        $this->entry->addEntry($input);
+
+        return redirect()->route('admin.entry.index');
+    }
+
+    /**
      * @param EntryStoreRequest $request
      * @return \Illuminate\Http\RedirectResponse
      */
