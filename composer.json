@@ -15,8 +15,10 @@
         "mockery/mockery": "0.9.*",
         "phpunit/phpunit": "~4.0",
         "phpspec/phpspec": "~2.1",
+        "doctrine/dbal": "~2.3",
         "barryvdh/laravel-ide-helper": "2.*",
-        "laravel/homestead": "~2.0"
+        "laravel/homestead": "~2.0",
+        "satooshi/php-coveralls": "*"
     },
     "autoload": {
         "classmap": [
