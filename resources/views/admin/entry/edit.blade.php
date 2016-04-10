@@ -4,7 +4,7 @@
     {!! ! method_field('put') !!}
     {!! csrf_field() !!}
     <div class="form-group @if($errors->first('title'))has-error @endif">
-        <label class="control-label" for="name">
+        <label class="control-label" for="title">
             タイトル {{{ $errors->first('title') }}}
         </label>
         <input type="text" class="form-control" id="title" name="title"
