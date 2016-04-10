@@ -7,8 +7,6 @@ use App\DataAccess\Eloquent\Entry;
 
 class EntryPolicy
 {
-    use HandlesAuthorization;
-
     /**
      * @param User $user
      * @param Entry $entry
